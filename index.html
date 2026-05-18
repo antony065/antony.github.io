@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antony — Gestão de Tráfego & Consultoria Comercial</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azul:       #0F4C8A;
+    --azul-mid:   #1A6FBF;
+    --azul-claro: #3B9EE8;
+    --azul-pale:  #E8F4FD;
+    --ouro:       #C9A84C;
+    --ouro-claro: #F0D98A;
+    --bg:         #F7F9FC;
+    --bg-dark:    #0A1628;
+    --texto:      #0D1B2A;
+    --muted:      #6B7C93;
+    --borda:      #D8E4F0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 5%;
+    background: rgba(247,249,252,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borda);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.25rem;
+    color: var(--azul);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--ouro); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--azul); }
+  .nav-cta {
+    background: var(--azul); color: #fff;
+    padding: 0.5rem 1.25rem; border-radius: 6px;
+    font-size: 0.875rem; font-weight: 500;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--azul-mid); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 5% 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(59,158,232,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(15,76,138,0.06) 0%, transparent 70%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--azul) 1px, transparent 1px),
+      linear-gradient(90deg, var(--azul) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--azul-pale); color: var(--azul);
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+    border: 1px solid rgba(15,76,138,0.15);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--azul-claro); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em; color: var(--texto);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 em { font-style: normal; color: var(--azul); }
+  h1 .linha-ouro { color: var(--ouro); }
+  .hero-desc {
+    font-size: 1.05rem; line-height: 1.75; color: var(--muted);
+    max-width: 480px; margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--azul); color: #fff;
+    padding: 0.875rem 2rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--azul-mid); transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--azul); font-size: 0.95rem; font-weight: 500;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: gap 0.2s;
+  }
+  .btn-secondary:hover { gap: 10px; }
+
+  /* HERO CARD */
+  .hero-card {
+    background: #fff; border: 1px solid var(--borda);
+    border-radius: 16px; padding: 2rem;
+    box-shadow: 0 8px 40px rgba(15,76,138,0.08);
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem; border-bottom: 1px solid var(--borda);
+  }
+  .avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--azul); color: #fff;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+  .card-role { font-size: 0.8rem; color: var(--muted); }
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .metric {
+    background: var(--azul-pale); border-radius: 10px; padding: 1rem;
+    border: 1px solid rgba(15,76,138,0.1);
+  }
+  .metric-val {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem;
+    color: var(--azul); line-height: 1;
+  }
+  .metric-val.ouro { color: var(--ouro); }
+  .metric-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+  .bar-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .bar-bg { background: var(--borda); border-radius: 100px; height: 6px; margin-bottom: 10px; }
+  .bar-fill { height: 100%; border-radius: 100px; background: var(--azul-claro); }
+  .bar-fill.g { background: #3B6D11; }
+  .bar-fill.o { background: var(--ouro); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SEÇÃO GENÉRICA ── */
+  section { padding: 5rem 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--azul); margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem;
+  }
+  .section-desc { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
+
+  /* ── DORES ── */
+  .dores { background: var(--bg-dark); color: #fff; }
+  .dores h2 { color: #fff; }
+  .dores .section-tag { color: var(--ouro-claro); }
+  .dores .section-desc { color: rgba(255,255,255,0.55); }
+  .dores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .dor-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 1.5rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .dor-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(59,158,232,0.3); }
+  .dor-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .dor-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .dor-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+  /* ── SERVIÇOS ── */
+  .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .servico-card {
+    background: #fff; border: 1px solid var(--borda); border-radius: 14px; padding: 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .servico-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--azul);
+  }
+  .servico-card.destaque::before { background: var(--ouro); }
+  .servico-card:hover { box-shadow: 0 12px 40px rgba(15,76,138,0.1); transform: translateY(-3px); }
+  .servico-icone {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--azul-pale); display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; margin-bottom: 1.25rem;
+  }
+  .servico-icone.ouro { background: #FDF6E3; }
+  .servico-titulo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .servico-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+  .servico-lista { list-style: none; }
+  .servico-lista li {
+    font-size: 0.85rem; color: var(--texto); padding: 5px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+    border-top: 1px solid var(--borda);
+  }
+  .servico-lista li::before { content: '→'; color: var(--azul); flex-shrink: 0; }
+  .servico-card.destaque .servico-lista li::before { color: var(--ouro); }
+
+  /* ── PLANOS ── */
+  .planos { background: var(--azul-pale); }
+  .planos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .plano-card {
+    background: #fff; border: 1px solid var(--borda); border-radius: 14px;
+    padding: 2rem; transition: box-shadow 0.2s;
+  }
+  .plano-card.featured {
+    background: var(--azul); border-color: var(--azul);
+    color: #fff;
+  }
+  .plano-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--ouro); color: #1a1000;
+    padding: 4px 10px; border-radius: 100px; margin-bottom: 1rem;
+  }
+  .plano-nome { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; margin-bottom: 0.25rem; }
+  .plano-preco { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.25rem; line-height: 1; }
+  .plano-preco span { font-size: 1rem; font-weight: 400; opacity: 0.6; }
+  .plano-sep { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 1.25rem 0; }
+  .plano-sep.dark { border-color: var(--borda); }
+  .plano-items { list-style: none; }
+  .plano-items li {
+    font-size: 0.875rem; padding: 6px 0; display: flex; gap: 8px; align-items: flex-start;
+    opacity: 0.9;
+  }
+  .plano-items li::before { content: '✓'; flex-shrink: 0; font-weight: 700; }
+  .plano-card.featured .plano-items li::before { color: var(--ouro-claro); }
+  .plano-card:not(.featured) .plano-items li::before { color: var(--azul); }
+  .btn-plano {
+    display: block; text-align: center; margin-top: 1.75rem;
+    padding: 0.75rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .plano-card.featured .btn-plano { background: #fff; color: var(--azul); }
+  .plano-card.featured .btn-plano:hover { background: var(--ouro-claro); }
+  .plano-card:not(.featured) .btn-plano { background: var(--azul); color: #fff; }
+  .plano-card:not(.featured) .btn-plano:hover { background: var(--azul-mid); }
+  .plano-nota {
+    text-align: center; margin-top: 2rem;
+    font-size: 0.85rem; color: var(--muted);
+  }
+
+  /* ── PROCESSO ── */
+  .processo-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 3rem; position: relative; }
+  .step {
+    padding: 1.5rem; border-left: 2px solid var(--borda); position: relative;
+  }
+  .step:first-child { border-left: 2px solid var(--azul); }
+  .step-num {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.5rem;
+    color: var(--borda); line-height: 1; margin-bottom: 0.5rem;
+  }
+  .step:first-child .step-num { color: var(--azul-pale); }
+  .step-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+  .step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CTA ── */
+  .cta { background: var(--azul); color: #fff; text-align: center; }
+  .cta h2 { color: #fff; }
+  .cta p { color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.75; max-width: 520px; margin: 1rem auto 2.5rem; }
+  .btn-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ouro); color: #1a1000;
+    padding: 1rem 2.5rem; border-radius: 8px;
+    font-size: 1rem; font-weight: 700; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-cta:hover { background: var(--ouro-claro); transform: translateY(-2px); }
+  .cta-sub { margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-dark); color: rgba(255,255,255,0.4);
+    text-align: center; padding: 2rem 5%;
+    font-size: 0.85rem;
+  }
+  footer strong { color: rgba(255,255,255,0.7); }
+
+  /* ── RESPONSIVO ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-card { display: none; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Antony<span>.</span></div>
+  <div class="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#planos">Planos</a>
+    <a href="#processo">Como funciona</a>
+  </div>
+  <a href="https://wa.me/5588992658846" class="nav-cta">Falar no WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Gestor de Tráfego & Consultor Comercial</div>
+      <h1>Mais clientes.<br><em>Mais vendas.</em><br><span class="linha-ouro">Resultado real.</span></h1>
+      <p class="hero-desc">Gerencio seus anúncios no Instagram e Facebook e analiso seu processo comercial para que cada real investido em tráfego vire cliente de verdade.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5588992658846" class="btn-primary">Quero mais clientes →</a>
+        <a href="#servicos" class="btn-secondary">Ver serviços ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="card-header">
+        <div class="avatar">AC</div>
+        <div>
+          <div class="card-name">Antony Cleylson</div>
+          <div class="card-role">Gestor de Tráfego & Consultor Comercial</div>
+        </div>
+      </div>
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-val">+10</div>
+          <div class="metric-label">Clientes ativos</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val ouro">Meta</div>
+          <div class="metric-label">Ads especialista</div>
+        </div>
+      </div>
+      <div>
+        <div class="bar-label"><span>Geração de leads</span><span>Alta</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div>
+        <div class="bar-label"><span>Redução de custo por clique</span><span>Ótima</span></div>
+        <div class="bar-bg"><div class="bar-fill g" style="width:82%"></div></div>
+        <div class="bar-label"><span>Consultoria comercial</span><span>Diferencial</span></div>
+        <div class="bar-bg"><div class="bar-fill o" style="width:75%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DORES -->
+<section class="dores">
+  <div class="section-inner">
+    <div class="section-tag">Você se identifica?</div>
+    <h2>O problema não é falta de produto.<br>É falta de estratégia.</h2>
+    <p class="section-desc">A maioria dos negócios locais perde dinheiro em anúncio porque não tem acompanhamento especializado.</p>
+    <div class="dores-grid">
+      <div class="dor-card">
+        <div class="dor-icon">💸</div>
+        <div class="dor-title">Investindo sem retorno</div>
+        <div class="dor-desc">Coloca dinheiro no anúncio mas não sabe se está gerando cliente ou só curtida.</div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">📉</div>
+        <div class="dor-title">Campanha parada no tempo</div>
+        <div class="dor-desc">Criou o anúncio uma vez e nunca mais otimizou. O algoritmo pune quem não atualiza.</div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">🤷</div>
+        <div class="dor-title">Sem saber o que medir</div>
+        <div class="dor-desc">Recebe relatório cheio de números, mas não sabe o que é bom ou ruim de verdade.</div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">📲</div>
+        <div class="dor-title">Lead chega, venda não fecha</div>
+        <div class="dor-desc">O anúncio funciona, mas o time de vendas não converte. O problema está no processo, não no tráfego.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-inner">
+    <div class="section-tag">O que eu faço</div>
+    <h2>Dois serviços que trabalham<br>juntos pelo seu resultado</h2>
+    <p class="section-desc">Não adianta trazer tráfego se o processo de venda não funciona. Aqui você tem os dois lados cobertos.</p>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <div class="servico-icone">📡</div>
+        <div class="servico-titulo">Gestão de Tráfego Pago</div>
+        <div class="servico-desc">Anúncios estratégicos no Instagram e Facebook para atrair clientes reais para o seu negócio local — com acompanhamento diário e otimização contínua.</div>
+        <ul class="servico-lista">
+          <li>Criação e gestão de campanhas no Meta Ads</li>
+          <li>Segmentação do público ideal para seu negócio</li>
+          <li>Otimização contínua para reduzir custo por resultado</li>
+          <li>Relatórios claros em linguagem simples</li>
+          <li>Reunião mensal de estratégia</li>
+        </ul>
+      </div>
+      <div class="servico-card destaque">
+        <div class="servico-icone ouro">🎯</div>
+        <div class="servico-titulo">Consultoria Comercial</div>
+        <div class="servico-desc">Analiso seu processo de vendas do primeiro contato até o fechamento — e identifico onde você está perdendo clientes que o tráfego já trouxe.</div>
+        <ul class="servico-lista">
+          <li>Diagnóstico do funil de vendas atual</li>
+          <li>Análise do atendimento e follow-up do time</li>
+          <li>Script e abordagem de vendas otimizados</li>
+          <li>Métricas de conversão por etapa</li>
+          <li>Plano de ação com prioridades claras</li>
+        </ul>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icone">🔗</div>
+        <div class="servico-titulo">Tráfego + Comercial</div>
+        <div class="servico-desc">A combinação completa: trago o cliente certo pelo anúncio e garanto que o seu time converte essa oportunidade em venda.</div>
+        <ul class="servico-lista">
+          <li>Todos os entregáveis dos dois serviços</li>
+          <li>Visão integrada de topo ao fundo do funil</li>
+          <li>Reuniões quinzenais de acompanhamento</li>
+          <li>Prioridade no atendimento e suporte</li>
+          <li>Análise de concorrência inclusa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="planos" id="planos">
+  <div class="section-inner">
+    <div class="section-tag">Investimento</div>
+    <h2>Planos transparentes,<br>sem letra miúda</h2>
+    <p class="section-desc">O budget de anúncios é pago direto ao Meta por você — aqui você investe na gestão profissional que faz esse dinheiro render.</p>
+    <div class="planos-grid">
+      <div class="plano-card">
+        <div class="plano-nome">Básico</div>
+        <div class="plano-preco">R$600 <span>/mês</span></div>
+        <hr class="plano-sep dark">
+        <ul class="plano-items">
+          <li>Gestão de campanhas Meta Ads</li>
+          <li>Até 2 campanhas ativas</li>
+          <li>Relatório mensal</li>
+          <li>Suporte via WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
+      </div>
+      <div class="plano-card featured">
+        <div class="plano-badge">Mais escolhido</div>
+        <div class="plano-nome">Crescimento</div>
+        <div class="plano-preco">R$900 <span>/mês</span></div>
+        <hr class="plano-sep">
+        <ul class="plano-items">
+          <li>Tudo do plano Básico</li>
+          <li>Até 4 campanhas ativas</li>
+          <li>Reunião mensal de estratégia</li>
+          <li>Relatório quinzenal</li>
+          <li>Sugestão de criativos</li>
+        </ul>
+        <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
+      </div>
+      <div class="plano-card">
+        <div class="plano-nome">Performance</div>
+        <div class="plano-preco">R$1.400 <span>/mês</span></div>
+        <hr class="plano-sep dark">
+        <ul class="plano-items">
+          <li>Tudo do Crescimento</li>
+          <li>Campanhas ilimitadas</li>
+          <li>Consultoria comercial inclusa</li>
+          <li>Análise do time de vendas</li>
+          <li>Reuniões quinzenais</li>
+        </ul>
+        <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
+      </div>
+    </div>
+    <p class="plano-nota">Não tem certeza qual plano escolher? <a href="https://wa.me/5588992658846" style="color:var(--azul);font-weight:500;">Conversa comigo sem compromisso →</a></p>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="section-inner">
+    <div class="section-tag">Como funciona</div>
+    <h2>Do primeiro contato<br>ao resultado</h2>
+    <div class="processo-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Conversa inicial</div>
+        <div class="step-desc">Entendo seu negócio, seu público e seus objetivos antes de propor qualquer estratégia.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Diagnóstico</div>
+        <div class="step-desc">Analiso o que já foi feito, onde estão os gargalos e quais oportunidades existem.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Lançamento</div>
+        <div class="step-desc">Estruturo as campanhas, defino segmentação e coloco os anúncios no ar com acompanhamento diário.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Resultados</div>
+        <div class="step-desc">Otimizamos juntos mês a mês. Você recebe relatório claro e reunião de estratégia para continuar crescendo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="section-inner">
+    <div class="section-tag" style="color:var(--ouro-claro)">Vamos conversar?</div>
+    <h2>Pronto para parar de perder<br>dinheiro em anúncio?</h2>
+    <p>Uma conversa rápida no WhatsApp é suficiente para eu entender seu negócio e te dizer o que faz sentido.</p>
+    <a href="https://wa.me/5588992658846" class="btn-cta">💬 Falar com Antony agora</a>
+    <p class="cta-sub">Sem compromisso. Respondo em até 24h.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Antony Cleylson</strong> — Gestão de Tráfego & Consultoria Comercial<br>
+  <span style="margin-top:4px;display:block">Ceará, Brasil · @Antony</span>
+</footer>
+
+</body>
+</html>
