@@ -233,32 +233,35 @@
   .historia-inner {
     display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center;
   }
-  .historia-left { position: relative; }
-  .historia-avatar {
-    width: 100%; max-width: 320px;
-    background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
-    border: 1px solid var(--border-md);
-    border-radius: 16px; padding: 2.5rem;
-    position: relative; overflow: hidden;
+  .historia-left { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+  .historia-photo-wrap {
+    position: relative; width: 100%; max-width: 300px;
   }
-  .historia-avatar::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--blue), var(--blue-glow));
+  .historia-photo-wrap::before {
+    content: ''; position: absolute; inset: -2px; border-radius: 20px;
+    background: linear-gradient(160deg, var(--blue-glow), transparent 60%);
+    z-index: 0; opacity: 0.5;
   }
-  .ha-initials {
-    width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, var(--blue), var(--blue-glow));
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.8rem;
-    color: var(--white); box-shadow: 0 0 28px rgba(59,158,248,0.4);
+  .historia-photo-wrap::after {
+    content: ''; position: absolute;
+    bottom: -30px; left: 50%; transform: translateX(-50%);
+    width: 70%; height: 40px;
+    background: radial-gradient(ellipse, rgba(59,158,248,0.25) 0%, transparent 70%);
+    z-index: 0;
   }
-  .ha-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .historia-photo {
+    position: relative; z-index: 1;
+    width: 100%; border-radius: 18px;
+    display: block;
+    filter: brightness(0.95) contrast(1.05);
+  }
+  .ha-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; width: 100%; max-width: 300px; }
   .ha-stat {
     background: rgba(59,158,248,0.07); border: 1px solid var(--border);
-    border-radius: 10px; padding: 1rem; text-align: center;
+    border-radius: 10px; padding: 0.875rem; text-align: center;
   }
-  .ha-stat-val { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.5rem; color: var(--blue-glow); }
-  .ha-stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+  .ha-stat-val { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.4rem; color: var(--blue-glow); }
+  .ha-stat-label { font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
   .historia-right h2 { margin-bottom: 1.5rem; }
   .historia-text {
     font-size: 0.97rem; color: var(--muted); line-height: 1.9; font-weight: 300;
@@ -450,8 +453,8 @@
   /* ── RESPONSIVO ── */
   @media (max-width: 900px) {
     .historia-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .historia-avatar { max-width: 100%; }
-    .ha-initials { width: 60px; height: 60px; font-size: 1.3rem; }
+    .historia-photo-wrap { max-width: 260px; }
+    .ha-stats { max-width: 260px; }
   }
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -562,31 +565,25 @@
   <div class="section-inner">
     <div class="historia-inner">
       <div class="historia-left">
-        <div class="historia-avatar">
-          <div class="ha-initials">AC</div>
-          <div style="text-align:center;">
-            <div style="font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;color:var(--white);">Antony Cleylson</div>
-            <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Gestor de Tráfego & Consultor Comercial</div>
-            <div style="width:50px;height:1px;background:linear-gradient(90deg,var(--blue),var(--blue-glow));margin:12px auto;"></div>
-            <div style="font-size:0.72rem;color:var(--blue-glow);letter-spacing:0.1em;text-transform:uppercase;">Ceará, Brasil</div>
+        <div class="historia-photo-wrap">
+          <img src="Foto perfil.png" alt="Antony Cleylson" class="historia-photo">
+        </div>
+        <div class="ha-stats">
+          <div class="ha-stat">
+            <div class="ha-stat-val">10+</div>
+            <div class="ha-stat-label">Anos em vendas</div>
           </div>
-          <div class="ha-stats">
-            <div class="ha-stat">
-              <div class="ha-stat-val">10+</div>
-              <div class="ha-stat-label">Anos em vendas</div>
-            </div>
-            <div class="ha-stat">
-              <div class="ha-stat-val">4</div>
-              <div class="ha-stat-label">Anos em tráfego</div>
-            </div>
-            <div class="ha-stat">
-              <div class="ha-stat-val">+100</div>
-              <div class="ha-stat-label">Clientes atendidos</div>
-            </div>
-            <div class="ha-stat">
-              <div class="ha-stat-val">Meta</div>
-              <div class="ha-stat-label">Ads especialista</div>
-            </div>
+          <div class="ha-stat">
+            <div class="ha-stat-val">4</div>
+            <div class="ha-stat-label">Anos em tráfego</div>
+          </div>
+          <div class="ha-stat">
+            <div class="ha-stat-val">+100</div>
+            <div class="ha-stat-label">Clientes atendidos</div>
+          </div>
+          <div class="ha-stat">
+            <div class="ha-stat-val">Meta</div>
+            <div class="ha-stat-label">Ads especialista</div>
           </div>
         </div>
       </div>
