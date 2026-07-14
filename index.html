@@ -318,6 +318,28 @@
   .plano-nota { text-align: center; margin-top: 2rem; font-size: 0.85rem; color: var(--muted); }
   .plano-nota a { color: var(--blue); font-weight: 600; text-decoration: none; }
 
+  /* ── CARD PERSONALIZADO ── */
+  .plano-card.custom {
+    background: linear-gradient(150deg, #fafbff 0%, var(--bg-mid) 100%);
+    border: 2px dashed var(--border-b);
+    position: relative; overflow: hidden;
+  }
+  .plano-card.custom:hover { box-shadow: 0 12px 40px rgba(37,99,235,0.12); border-style: solid; border-color: var(--blue); transform: translateY(-3px); }
+  .custom-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .custom-subtitle { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin: 0.5rem 0 1.5rem; }
+  .custom-bullets { list-style: none; margin-bottom: 1.75rem; }
+  .custom-bullets li { font-size: 0.84rem; color: var(--muted); padding: 6px 0; display: flex; gap: 8px; border-top: 1px solid var(--border); }
+  .custom-bullets li::before { content: '✦'; color: var(--gold); flex-shrink: 0; font-size: 0.7rem; margin-top: 3px; }
+  .btn-custom {
+    display: block; text-align: center;
+    padding: 0.85rem; border-radius: 8px;
+    font-weight: 700; font-size: 0.875rem; text-decoration: none;
+    background: linear-gradient(135deg, var(--blue), var(--navy-mid));
+    color: #fff; transition: all 0.2s;
+    box-shadow: 0 3px 14px rgba(37,99,235,0.25);
+  }
+  .btn-custom:hover { box-shadow: 0 6px 22px rgba(37,99,235,0.38); transform: translateY(-1px); }
+
   /* ── MINI COMO FUNCIONA ── */
   .como-funciona-mini {
     background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px;
@@ -639,6 +661,19 @@
         </ul>
         <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
       </div>
+      <div class="plano-card custom">
+        <div class="custom-icon">✏️</div>
+        <div class="plano-nome">Personalize sua proposta</div>
+        <div class="custom-subtitle">Negócio fora do padrão? Volume maior? Necessidade específica? Monta comigo um plano sob medida para a sua realidade.</div>
+        <hr class="plano-sep">
+        <ul class="custom-bullets">
+          <li>Serviços combinados conforme sua demanda</li>
+          <li>Volume de campanhas ajustável</li>
+          <li>Periodicidade de reuniões personalizada</li>
+          <li>Condições negociáveis para contratos longos</li>
+        </ul>
+        <a href="https://wa.me/5588992658846?text=Ol%C3%A1%20Antony%2C%20gostaria%20de%20montar%20uma%20proposta%20personalizada!" class="btn-custom">💬 Montar minha proposta</a>
+      </div>
     </div>
     <p class="plano-nota">Não tem certeza qual plano escolher? <a href="https://wa.me/5588992658846">Conversa comigo sem compromisso →</a></p>
   </div>
@@ -702,6 +737,19 @@
           <li>Suporte prioritário</li>
         </ul>
         <a href="https://wa.me/5588992658846" class="btn-plano">Quero o pacote completo</a>
+      </div>
+      <div class="plano-card custom">
+        <div class="custom-icon">✏️</div>
+        <div class="plano-nome">Personalize sua proposta</div>
+        <div class="custom-subtitle">Cada negócio tem suas particularidades. Se nenhum plano acima encaixa perfeitamente na sua situação, vamos conversar e montar algo exclusivo para você.</div>
+        <hr class="plano-sep">
+        <ul class="custom-bullets">
+          <li>Combinação livre de serviços</li>
+          <li>Escopo e prazo ajustados à sua realidade</li>
+          <li>Atendimento presencial ou remoto</li>
+          <li>Condições especiais para parcerias longas</li>
+        </ul>
+        <a href="https://wa.me/5588992658846?text=Ol%C3%A1%20Antony%2C%20gostaria%20de%20montar%20uma%20proposta%20personalizada%20de%20consultoria!" class="btn-custom">💬 Montar minha proposta</a>
       </div>
     </div>
     <p class="plano-nota">Não sabe qual faz sentido para o seu momento? <a href="https://wa.me/5588992658846">Me chama e te oriento →</a></p>
