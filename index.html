@@ -421,10 +421,71 @@
   .footer-logo-name { font-weight: 700; font-size: 0.9rem; color: #fff; letter-spacing: 0.06em; }
   .footer-logo-sub { font-size: 0.58rem; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2px; }
 
+  /* ── FORMULÁRIO ORÇAMENTO ── */
+  .orcamento { background: var(--bg-soft); border-top: 1px solid var(--border); }
+  .orcamento-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .orcamento-info h2 { margin-bottom: 1rem; }
+  .orcamento-bullets { list-style: none; margin-top: 2rem; }
+  .orcamento-bullets li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 0.9rem 0; border-top: 1px solid var(--border);
+    font-size: 0.9rem; color: var(--muted); line-height: 1.6;
+  }
+  .orcamento-bullets li:first-child { border-top: none; }
+  .ob-icon {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    background: var(--bg-mid); border: 1px solid var(--border-b);
+    display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+  }
+  .ob-text strong { display: block; font-weight: 600; color: var(--navy); margin-bottom: 2px; font-size: 0.875rem; }
+  .form-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 20px; padding: 2.5rem;
+    box-shadow: 0 4px 32px rgba(37,99,235,0.07);
+  }
+  .form-card-title {
+    font-family: 'Playfair Display', serif; font-weight: 800;
+    font-size: 1.2rem; color: var(--navy); margin-bottom: 0.4rem;
+  }
+  .form-card-sub { font-size: 0.84rem; color: var(--muted); margin-bottom: 2rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label {
+    display: block; font-size: 0.8rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 6px; letter-spacing: 0.04em;
+  }
+  .form-input {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border); border-radius: 9px;
+    font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text);
+    background: var(--bg-soft); transition: all 0.2s; outline: none;
+  }
+  .form-input:focus { border-color: var(--blue); background: #fff; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .form-input::placeholder { color: var(--muted); opacity: 0.6; }
+  .form-input-prefix {
+    position: relative;
+  }
+  .form-input-prefix .at {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    font-size: 0.95rem; font-weight: 600; color: var(--blue); pointer-events: none;
+  }
+  .form-input-prefix input { padding-left: 28px; }
+  .btn-form-submit {
+    width: 100%; padding: 1rem; border: none; border-radius: 9px;
+    background: linear-gradient(135deg, var(--blue), var(--navy-mid));
+    color: #fff; font-family: 'Inter', sans-serif;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; box-shadow: 0 4px 16px rgba(37,99,235,0.28);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 1.75rem;
+  }
+  .btn-form-submit:hover { box-shadow: 0 6px 24px rgba(37,99,235,0.4); transform: translateY(-1px); }
+  .form-privacy { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 0.875rem; }
+
   /* ── RESPONSIVO ── */
   @media (max-width: 900px) {
     .historia-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .historia-photo-wrap, .ha-stats { max-width: 280px; }
+    .orcamento-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   }
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -447,8 +508,7 @@
   <div class="nav-links">
     <a href="#historia">Minha História</a>
     <a href="#servicos">Serviços</a>
-    <a href="#planos">Tráfego</a>
-    <a href="#consultoria">Consultoria</a>
+    <a href="#orcamento">Orçamento</a>
     <a href="#processo">Como funciona</a>
   </div>
   <a href="https://wa.me/5588992658846" class="nav-cta">Falar no WhatsApp</a>
@@ -610,153 +670,84 @@
   </div>
 </section>
 
-<!-- PLANOS TRÁFEGO -->
-<section class="planos" id="planos">
+<!-- ORÇAMENTO -->
+<section class="orcamento" id="orcamento">
   <div class="section-inner">
-    <div class="section-tag">Gestão de Tráfego — Planos</div>
-    <h2>Escolha o plano ideal<br>para o seu <em>negócio</em></h2>
-    <p class="section-desc">O budget de anúncios é pago direto ao Meta por você — aqui você investe na gestão profissional que faz esse dinheiro render.</p>
-    <div class="como-funciona-mini">
-      <div><div class="cfm-item-icon">📋</div><div class="cfm-item-title">1. Você contrata o plano</div><div class="cfm-item-desc">Escolhe o plano e me chama no WhatsApp para alinharmos os detalhes.</div></div>
-      <div><div class="cfm-item-icon">🎯</div><div class="cfm-item-title">2. Eu monto a estratégia</div><div class="cfm-item-desc">Entendo seu negócio e objetivo antes de criar qualquer anúncio.</div></div>
-      <div><div class="cfm-item-icon">📡</div><div class="cfm-item-title">3. Campanhas no ar</div><div class="cfm-item-desc">Coloco os anúncios para rodar e monitoro diariamente.</div></div>
-      <div><div class="cfm-item-icon">📊</div><div class="cfm-item-title">4. Você acompanha tudo</div><div class="cfm-item-desc">Relatórios claros e reuniões periódicas sobre os resultados.</div></div>
-    </div>
-    <div class="planos-grid">
-      <div class="plano-card custom">
-        <div class="custom-icon">✏️</div>
-        <div class="plano-nome">Personalize sua proposta</div>
-        <div class="custom-subtitle">Não sabe por onde começar? Me conta o seu momento e montamos juntos o plano ideal para o seu negócio.</div>
-        <hr class="plano-sep">
-        <ul class="custom-bullets">
-          <li>Serviços ajustados à sua realidade</li>
-          <li>Volume de campanhas flexível</li>
-          <li>Criativos conforme sua necessidade</li>
-          <li>Condições negociáveis para contratos longos</li>
+    <div class="orcamento-inner">
+      <div class="orcamento-info">
+        <div class="section-tag">Orçamento Personalizado</div>
+        <h2>Solicite uma proposta<br>feita para a sua <em>empresa</em></h2>
+        <p class="section-desc">Cada negócio é único. Preencha o formulário e entrarei em contato para montar uma estratégia sob medida para você.</p>
+        <ul class="orcamento-bullets">
+          <li>
+            <div class="ob-icon">📡</div>
+            <div class="ob-text"><strong>Gestão de Tráfego</strong>Anúncios no Meta Ads com acompanhamento diário e criativos inclusos.</div>
+          </li>
+          <li>
+            <div class="ob-icon">🎯</div>
+            <div class="ob-text"><strong>Consultoria Comercial</strong>Diagnóstico do seu funil de vendas e treinamento do time.</div>
+          </li>
+          <li>
+            <div class="ob-icon">🔗</div>
+            <div class="ob-text"><strong>Pacote Completo</strong>Tráfego + consultoria com visão integrada do início ao fechamento.</div>
+          </li>
+          <li>
+            <div class="ob-icon">💬</div>
+            <div class="ob-text"><strong>Retorno em até 24h</strong>Recebo sua solicitação e entro em contato para alinhar os detalhes.</div>
+          </li>
         </ul>
-        <a href="https://wa.me/5588992658846?text=Ol%C3%A1%20Antony%2C%20gostaria%20de%20montar%20uma%20proposta%20personalizada!" class="btn-custom">💬 Montar minha proposta</a>
       </div>
-      <div class="plano-card">
-        <div class="plano-nome">Básico</div>
-        <div class="plano-preco">R$800 <span>/mês</span></div>
-        <hr class="plano-sep">
-        <ul class="plano-items">
-          <li>Gestão de campanhas Meta Ads</li>
-          <li>1 campanha ativa</li>
-          <li>1 criativo estático por semana</li>
-          <li>Relatório mensal</li>
-          <li>Suporte via WhatsApp</li>
-        </ul>
-        <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
-      </div>
-      <div class="plano-card featured">
-        <div class="plano-badge">Mais escolhido</div>
-        <div class="plano-nome">Crescimento</div>
-        <div class="plano-preco">R$1.000 <span>/mês</span></div>
-        <hr class="plano-sep">
-        <ul class="plano-items">
-          <li>Tudo do plano Básico</li>
-          <li>Até 2 campanhas ativas</li>
-          <li>2 criativos estáticos por semana</li>
-          <li>Reunião mensal de estratégia</li>
-          <li>Relatório quinzenal</li>
-        </ul>
-        <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
-      </div>
-      <div class="plano-card">
-        <div class="plano-nome">Performance</div>
-        <div class="plano-preco">R$1.500 <span>/mês</span></div>
-        <hr class="plano-sep">
-        <ul class="plano-items">
-          <li>Tudo do Crescimento</li>
-          <li>Campanhas ilimitadas</li>
-          <li>4 criativos estáticos por semana</li>
-          <li>Análise do time de vendas</li>
-          <li>Reuniões e relatórios quinzenais</li>
-        </ul>
-        <a href="https://wa.me/5588992658846" class="btn-plano">Quero este plano</a>
+      <div>
+        <div class="form-card">
+          <div class="form-card-title">Solicite um orçamento personalizado</div>
+          <div class="form-card-sub">Preencha os campos abaixo — é rápido e sem compromisso.</div>
+          <form id="orcamento-form">
+            <div class="form-group">
+              <label class="form-label" for="f-empresa">Nome da empresa</label>
+              <input class="form-input" type="text" id="f-empresa" placeholder="Ex: Padaria do João" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-endereco">Endereço</label>
+              <input class="form-input" type="text" id="f-endereco" placeholder="Ex: Rua das Flores, 123 — Fortaleza/CE" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-proprietario">Nome do proprietário</label>
+              <input class="form-input" type="text" id="f-proprietario" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-instagram">@ do Instagram</label>
+              <div class="form-input-prefix">
+                <span class="at">@</span>
+                <input class="form-input" type="text" id="f-instagram" placeholder="seunegocio" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-form-submit">
+              💬 Enviar solicitação pelo WhatsApp
+            </button>
+          </form>
+          <p class="form-privacy">Suas informações são usadas apenas para elaborar sua proposta.</p>
+        </div>
       </div>
     </div>
-    <p class="plano-nota">Não tem certeza qual plano escolher? <a href="https://wa.me/5588992658846">Conversa comigo sem compromisso →</a></p>
   </div>
 </section>
 
-<!-- PLANOS CONSULTORIA -->
-<section class="consultoria-section" id="consultoria">
-  <div class="section-inner">
-    <div class="section-tag">Consultoria Comercial — Planos</div>
-    <h2>Seu time pode estar<br>perdendo clientes <em>agora</em></h2>
-    <p class="section-desc">De nada adianta o anúncio trazer o cliente certo se o processo de vendas deixa ele escapar. A consultoria resolve isso.</p>
-    <div style="margin:2rem 0">
-      <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;">Como funciona a Consultoria Completa — 30 dias</div>
-      <div class="semanas-grid">
-        <div class="semana-item"><div class="semana-label">Semana 1</div><div class="semana-title">Diagnóstico</div><div class="semana-desc">Mapeio o processo comercial, entrevisto o time e identifico onde as vendas estão sendo perdidas.</div></div>
-        <div class="semana-item"><div class="semana-label">Semana 2</div><div class="semana-title">Estratégia</div><div class="semana-desc">Apresento o diagnóstico com dados claros e entrego o plano de ação com prioridades definidas.</div></div>
-        <div class="semana-item"><div class="semana-label">Semana 3</div><div class="semana-title">Treinamento</div><div class="semana-desc">Treino o time com script, objeções e técnicas de fechamento aplicadas à realidade do negócio.</div></div>
-        <div class="semana-item"><div class="semana-label">Semana 4</div><div class="semana-title">Implementação</div><div class="semana-desc">Acompanho a aplicação e entrego relatório final com métricas e recomendações.</div></div>
-      </div>
-    </div>
-    <div class="planos-grid">
-      <div class="plano-card custom">
-        <div class="custom-icon">✏️</div>
-        <div class="plano-nome">Personalize sua proposta</div>
-        <div class="custom-subtitle">Não sabe por onde começar? Me conta o seu momento e montamos juntos a abordagem certa para o seu negócio.</div>
-        <hr class="plano-sep">
-        <ul class="custom-bullets">
-          <li>Combinação livre de serviços</li>
-          <li>Escopo e prazo ajustados à sua realidade</li>
-          <li>Atendimento presencial ou remoto</li>
-          <li>Condições especiais para parcerias longas</li>
-        </ul>
-        <a href="https://wa.me/5588992658846?text=Ol%C3%A1%20Antony%2C%20gostaria%20de%20montar%20uma%20proposta%20personalizada%20de%20consultoria!" class="btn-custom">💬 Montar minha proposta</a>
-      </div>
-      <div class="plano-card">
-        <div class="plano-nome">Diagnóstico</div>
-        <div class="plano-preco">R$800 <span>único</span></div>
-        <hr class="plano-sep">
-        <div style="font-size:.83rem;color:var(--muted);margin-bottom:.75rem;line-height:1.65;">Ideal para entender onde está perdendo vendas antes de investir no processo completo.</div>
-        <ul class="plano-items">
-          <li>Análise completa do funil de vendas</li>
-          <li>Entrevista com o dono e o time</li>
-          <li>Mapeamento dos gargalos comerciais</li>
-          <li>Apresentação do diagnóstico</li>
-          <li>Plano de ação com prioridades</li>
-        </ul>
-        <a href="https://wa.me/5588992658846" class="btn-plano">Quero o diagnóstico</a>
-      </div>
-      <div class="plano-card featured">
-        <div class="plano-badge">Mais completo</div>
-        <div class="plano-nome">Consultoria Completa</div>
-        <div class="plano-preco">R$2.500 <span>/ 30 dias</span></div>
-        <hr class="plano-sep">
-        <div style="font-size:.83rem;color:rgba(255,255,255,.55);margin-bottom:.75rem;line-height:1.65;">Diagnóstico + estratégia + treinamento + acompanhamento da implementação.</div>
-        <ul class="plano-items">
-          <li>Tudo do Diagnóstico</li>
-          <li>Script de vendas personalizado</li>
-          <li>Treinamento prático do time comercial</li>
-          <li>Acompanhamento da implementação</li>
-          <li>Relatório final com métricas</li>
-        </ul>
-        <a href="https://wa.me/5588992658846" class="btn-plano">Quero a consultoria</a>
-      </div>
-      <div class="plano-card">
-        <div class="plano-nome">Tráfego + Consultoria</div>
-        <div class="plano-preco">R$3.200 <span>/ mês</span></div>
-        <hr class="plano-sep">
-        <div style="font-size:.83rem;color:var(--muted);margin-bottom:.75rem;line-height:1.65;">O pacote mais completo: anúncios que trazem o cliente certo e processo comercial que fecha a venda.</div>
-        <ul class="plano-items">
-          <li>Gestão de tráfego completa</li>
-          <li>Consultoria comercial inclusa</li>
-          <li>Visão integrada do funil completo</li>
-          <li>Reuniões quinzenais de estratégia</li>
-          <li>Suporte prioritário</li>
-        </ul>
-        <a href="https://wa.me/5588992658846" class="btn-plano">Quero o pacote completo</a>
-      </div>
-    </div>
-    <p class="plano-nota">Não sabe qual faz sentido para o seu momento? <a href="https://wa.me/5588992658846">Me chama e te oriento →</a></p>
-  </div>
-</section>
+<script>
+document.getElementById('orcamento-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var empresa = document.getElementById('f-empresa').value.trim();
+  var endereco = document.getElementById('f-endereco').value.trim();
+  var prop = document.getElementById('f-proprietario').value.trim();
+  var ig = document.getElementById('f-instagram').value.trim().replace(/^@/, '');
+  var msg = 'Olá Antony! Gostaria de solicitar um orçamento personalizado.\n\n'
+    + '🏢 *Empresa:* ' + empresa + '\n'
+    + '📍 *Endereço:* ' + endereco + '\n'
+    + '👤 *Proprietário:* ' + prop + '\n'
+    + '📸 *Instagram:* @' + ig + '\n\n'
+    + 'Aguardo seu contato!';
+  window.open('https://wa.me/5588992658846?text=' + encodeURIComponent(msg), '_blank');
+});
+</script>
 
 <!-- PROCESSO -->
 <section class="processo" id="processo">
