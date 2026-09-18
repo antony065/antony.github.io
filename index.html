@@ -8,6 +8,24 @@
 <meta property="og:title" content="Antony — Tráfego pago para Hair Colorist especialista em mechas">
 <meta property="og:description" content="Gestão de tráfego pago focada em coloristas especialistas em mechas. Agende uma reunião online e saiba se faz sentido pro seu salão.">
 <meta property="og:type" content="website">
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+     n.queue=[];t=b.createElement(e);t.async=!0;
+     t.src=v;s=b.getElementsByTagName(e)[0];
+     s.parentNode.insertBefore(t,s)}(window, document,'script',
+                                     'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1709700193469211');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+              src="https://www.facebook.com/tr?id=1709700193469211&ev=PageView&noscript=1"
+              /></noscript>
+<!-- End Meta Pixel Code -->
+  
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -754,6 +772,11 @@
 
     form.style.display = 'none';
     document.getElementById('successPanel').classList.add('active');
+    
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead');
+  }
+
 
     window.open(url, '_blank', 'noopener');
   });
